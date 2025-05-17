@@ -16,9 +16,9 @@ public class NewsController {
     private NewsRepository newsRepository;
 
     @GetMapping("/news")
-    List<News> all(){
+    ResponseEntity<List<News>> all(){
         List<News> listOfNews = newsRepository.findAll();
-        return listOfNews;
+        return new ResponseEntity<>(listOfNews, HttpStatus.OK);
     }
 
     @PostMapping("/news/create")
